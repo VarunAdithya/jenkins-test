@@ -1,14 +1,10 @@
 pipeline {
-    agent any
+    agent { docker { image 'maven:3.3.3' } }
     stages {
-
-        stage('testing pipeline'){
-          steps{
-		    echo 'test1'
-                sh 'mkdir from-jenkins'
-                sh 'touch from-jenkins/test.txt'
-                }
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
         }
-
-}
+    }
 }
